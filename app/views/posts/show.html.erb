@@ -1,0 +1,8 @@
+<h1><%= @post.content %></h1>
+
+<h2>Comments</h2>
+<%= render 'comments/form', post: @post, parent_id: nil %>
+
+<ul>
+  <%= render partial: 'comments/comment', collection: @comments %>
+</ul>

@@ -1,0 +1,17 @@
+<li>
+  <p><strong><%= comment.user.email %></strong>: <%= comment.content %></p>
+
+  <div class="actions">
+    <%= link_to 'Reply', '#', data: { toggle: "reply-form-#{comment.id}" }, class: 'btn btn-link' %>
+  </div>
+
+  <div id="reply-form-<%= comment.id %>" style="display: none;">
+    <%= render 'comments/form', post: comment.post, parent_id: comment.id %> <!-- Reply form -->
+  </div>
+
+  <% if comment.replies.any? %>
+    <ul>
+      <%= render partial: 'comments/comment', collection: comment.replies %> <!-- Recursively render replies -->
+    </ul>
+  <% end %>
+</li>
